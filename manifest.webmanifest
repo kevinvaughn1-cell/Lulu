@@ -1,0 +1,9 @@
+{
+  "name": "Lulu Artisan Goods",
+  "short_name": "Lulu",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf7f2",
+  "theme_color": "#faf7f2",
+  "icons": [{ "src": "images/logo.png", "sizes": "232x232", "type": "image/png" }]
+}

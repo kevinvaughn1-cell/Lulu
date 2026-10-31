@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lulu Artisan Goods</title>
+<meta name="description" content="Handmade goods and small-batch bakes from Collierville, TN. A little practical. A little lovely.">
+<meta name="theme-color" content="#faf7f2">
+<link rel="icon" href="images/logo.png">
+<link rel="apple-touch-icon" href="images/logo.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="hero">
+  <img class="logo" src="images/logo.png" alt="Lulu Artisan Goods">
+  <h1>A Collection of Good Things</h1>
+  <p class="tagline">A little practical. A little lovely.</p>
+  <p class="eyebrow">Handmade goods + small-batch bakes</p>
+</header>
+
+<nav class="tabs" id="tabs" aria-label="Collections"></nav>
+
+<main id="catalog"></main>
+
+<section class="fabrics" id="fabrics">
+  <h2>Fabric choices</h2>
+  <p class="sub">A few favorites for your made-to-order pieces. <span class="eyebrow">100% cotton</span></p>
+  <div class="swatches" id="swatches"></div>
+  <h3 class="eyebrow center">Patchwork strip collections</h3>
+  <div class="swatches strips" id="strips"></div>
+  <p class="note">Fabric selections are subject to availability. Prints may vary by batch.</p>
+</section>
+
+<footer>
+  <p class="eyebrow">Thank you for shopping small.</p>
+  <p class="small">Small batch / Made with intention / Collierville, TN</p>
+</footer>
+
+<!-- Floating order button -->
+<button class="cart-btn" id="cartBtn" hidden>
+  <span>View order</span><span class="badge" id="cartCount">0</span>
+</button>
+
+<!-- Item dialog -->
+<dialog id="itemDialog">
+  <form method="dialog" class="sheet" id="itemForm">
+    <button class="close" value="cancel" aria-label="Close">&times;</button>
+    <img id="dImg" alt="">
+    <h2 id="dName"></h2>
+    <p class="price" id="dPrice"></p>
+    <p class="desc" id="dDesc"></p>
+    <div id="dOptions"></div>
+    <label class="field">Quantity
+      <div class="qty">
+        <button type="button" data-step="-1" aria-label="Less">&minus;</button>
+        <input id="dQty" type="number" min="1" value="1" inputmode="numeric">
+        <button type="button" data-step="1" aria-label="More">+</button>
+      </div>
+    </label>
+    <p class="line-total" id="dTotal"></p>
+    <button class="primary" value="add" id="addBtn">Add to order</button>
+  </form>
+</dialog>
+
+<!-- Order dialog -->
+<dialog id="orderDialog">
+  <div class="sheet">
+    <button class="close" id="orderClose" aria-label="Close">&times;</button>
+    <h2>Your order</h2>
+    <ul class="order-list" id="orderList"></ul>
+    <p class="order-total">Estimated total: <strong id="orderTotal">$0</strong></p>
+    <p class="note">Final price confirmed when we reach out. Nothing is charged here.</p>
+
+    <form name="order" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="orderForm">
+      <input type="hidden" name="form-name" value="order">
+      <p hidden><label>Leave blank <input name="bot-field"></label></p>
+      <input type="hidden" name="items" id="itemsField">
+      <input type="hidden" name="estimated-total" id="totalField">
+      <label class="field">Name <input name="name" required autocomplete="name"></label>
+      <label class="field">Phone or email <input name="contact" required autocomplete="email"></label>
+      <label class="field">Needed by (optional) <input name="needed-by" type="date"></label>
+      <label class="field">Notes (optional)
+        <textarea name="notes" rows="3" placeholder="Pickup or delivery, names for a banner, scents, colors…"></textarea>
+      </label>
+      <button class="primary" type="submit">Send order request</button>
+    </form>
+  </div>
+</dialog>
+
+<!-- Thanks dialog -->
+<dialog id="thanksDialog">
+  <div class="sheet center">
+    <img class="logo small" src="images/logo.png" alt="">
+    <h2>Thank you!</h2>
+    <p>Your order request is on its way. We'll be in touch soon to confirm details.</p>
+    <button class="primary" id="thanksClose">Back to the shop</button>
+  </div>
+</dialog>
+
+<script src="catalog.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
