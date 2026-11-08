@@ -1,5 +1,5 @@
 // Web3Forms access key: get one free at web3forms.com using the inbox orders should go to.
-const WEB3FORMS_KEY = "";
+const WEB3FORMS_KEY = "2e959757-e608-41e6-b90f-82190ec8a0f0";
 
 (function () {
   const $ = (s) => document.querySelector(s);
