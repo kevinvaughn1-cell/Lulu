@@ -3,7 +3,8 @@ const WEB3FORMS_KEY = "f977bdbc-e3e7-4a41-96db-0c8751a2e808";
 
 (function () {
   const $ = (s) => document.querySelector(s);
-  const img = (n) => `images/${n}.jpg`;
+  const IMG_VERSION = 2; // bump when you replace a photo
+  const img = (n) => `images/${n}.jpg?v=${IMG_VERSION}`;
   const money = (n) => "$" + (Math.round(n * 100) / 100).toLocaleString();
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const items = {};
