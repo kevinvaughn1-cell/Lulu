@@ -1,3 +1,6 @@
+// Web3Forms access key: get one free at web3forms.com using the inbox orders should go to.
+const WEB3FORMS_KEY = "";
+
 (function () {
   const $ = (s) => document.querySelector(s);
   const img = (n) => `images/${n}.jpg`;
@@ -157,13 +160,34 @@
     e.preventDefault();
     const form = e.target, btn = form.querySelector("button[type=submit]");
     btn.disabled = true; btn.textContent = "Sending…";
+    const data = new FormData(form);
+    // Copy saved in Netlify (Forms tab), as a backup.
+    const toNetlify = fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(data).toString()
+    }).then((r) => r.ok);
+    // Email to Lulu via Web3Forms (free).
+    const toEmail = WEB3FORMS_KEY ? fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: `New Lulu order from ${data.get("name")}`,
+        from_name: "Lulu Artisan Goods website",
+        botcheck: data.get("bot-field") || "",
+        ...(/@/.test(data.get("contact")) ? { replyto: data.get("contact") } : {}),
+        Name: data.get("name"),
+        Contact: data.get("contact"),
+        "Needed by": data.get("needed-by") || "—",
+        Items: data.get("items"),
+        "Estimated total": data.get("estimated-total"),
+        Notes: data.get("notes") || "—"
+      })
+    }).then((r) => r.ok) : Promise.resolve(false);
     try {
-      const res = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(new FormData(form)).toString()
-      });
-      if (!res.ok) throw new Error(res.status);
+      const results = await Promise.all([toNetlify.catch(() => false), toEmail.catch(() => false)]);
+      if (!results.some(Boolean)) throw new Error("send failed");
       order = []; save(); renderOrder(); form.reset();
       od.close(); $("#thanksDialog").showModal();
     } catch (err) {
