@@ -24,7 +24,7 @@ const WEB3FORMS_KEY = "f977bdbc-e3e7-4a41-96db-0c8751a2e808";
             <span class="photo"><img src="${img(i.img)}" alt="" loading="lazy"></span>
             <span class="name">${esc(i.name)}</span>
             <span class="price">${esc(i.priceLabel || money(i.price))}</span>
-            <span class="desc">${esc(i.desc)}</span>
+            <span class="desc">${esc(i.short || i.desc)}</span>
           </button>`).join("")}
       </div>
     </section>`).join("");

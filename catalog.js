@@ -5,6 +5,7 @@
 // fabric: true lets customers pick a print from the fabric library.
 // options: choices that add to the price.
 // personalize: label for a required text box (e.g. a name to embroider).
+// short: card text when desc is too long for the card (popup still shows desc).
 // note: extra detail shown only in the item popup (care, safety).
 
 window.CATALOG = [
@@ -58,6 +59,7 @@ window.CATALOG = [
           { label: "Batting", choices: [["None", 0], ["Polyester batting + quilting", 5], ["Cotton batting + quilting", 7]] }
         ] },
       { id: "cosmetic-bag", name: "Quilted Cosmetic Bag", price: 30, img: "quilted-cosmetic-bag",
+        short: "Diamond quilted, with a gold tone zipper and side tabs.",
         desc: "Individually handmade with diamond quilting, a gold tone zipper and coordinating fabric side tabs. Soft yet structured, this spacious bag is perfect for cosmetics, toiletries, travel essentials or everyday organization. Beautiful enough to display and practical enough to use every day." },
       { id: "hot-pad", name: "Casserole Hot Pad", price: 15, img: "casserole-hot-pad",
         desc: "Colorful cotton patchwork, insulated for hot dishes." }
