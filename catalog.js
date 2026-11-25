@@ -4,6 +4,8 @@
 // bundle: [count, price] deal, e.g. 2 for $10.
 // fabric: true lets customers pick a print from the fabric library.
 // options: choices that add to the price.
+// personalize: label for a required text box (e.g. a name to embroider).
+// note: extra detail shown only in the item popup (care, safety).
 
 window.CATALOG = [
   {
@@ -16,7 +18,11 @@ window.CATALOG = [
       { id: "fabric-basket", name: "Fabric Basket", price: 12, img: "fabric-basket", fabric: true,
         desc: "A cheerful catch-all for shelves, toys, and the little things." },
       { id: "beeswax-wraps", name: "Beeswax Wraps", price: 5, priceLabel: "From $5", img: "beeswax-wraps",
-        desc: "Reusable cotton wraps for leftovers, snacks, and less plastic." }
+        desc: "Reusable cotton wraps for leftovers, snacks, and less plastic." },
+      { id: "goose-lovey", name: "Personalized Goose Lovey", price: 20, img: "goose-lovey",
+        personalize: "Name to embroider",
+        desc: "Handcrafted from soft, breathable double gauze cotton, featuring knotted wings, sleepy embroidered eyes and your choice of personalized name. A sweet baby shower gift or treasured keepsake.",
+        note: "Care: Gentle wash in cold water and lay flat to dry. Please note: Each lovey is individually handmade, making every piece slightly unique. Intended for supervised use. Do not place in an infant's sleeping space." }
     ]
   },
   {

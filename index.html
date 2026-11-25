@@ -59,11 +59,12 @@
 <!-- Item dialog -->
 <dialog id="itemDialog">
   <form method="dialog" class="sheet" id="itemForm">
-    <button class="close" value="cancel" aria-label="Close">&times;</button>
+    <button class="close" value="cancel" formnovalidate aria-label="Close">&times;</button>
     <img id="dImg" alt="">
     <h2 id="dName"></h2>
     <p class="price" id="dPrice"></p>
     <p class="desc" id="dDesc"></p>
+    <p class="note" id="dNote" hidden></p>
     <div id="dOptions"></div>
     <label class="field">Quantity
       <div class="qty">

@@ -60,6 +60,9 @@ const WEB3FORMS_KEY = "f977bdbc-e3e7-4a41-96db-0c8751a2e808";
         o.choices.map(([n, add]) => `<option value="${add}">${esc(n)}${add ? ` (+${money(add)})` : ""}</option>`).join("") +
         `</select></label>`;
     });
+    if (item.personalize) {
+      html += `<label class="field">${esc(item.personalize)}<input type="text" id="dPersonal" maxlength="40" required autocomplete="off" placeholder="Exactly as it should be stitched"></label>`;
+    }
     if (item.fabric) {
       html += `<div class="field">Fabric<div class="fabric-pick">` +
         [["No preference", null]].concat(FABRICS).map(([n, f], k) => `
@@ -78,6 +81,8 @@ const WEB3FORMS_KEY = "f977bdbc-e3e7-4a41-96db-0c8751a2e808";
       const name = s.options[s.selectedIndex].text.replace(/ \(\+.*\)$/, "");
       if (name !== "None") picked.push(o.label === "Size" ? name : name);
     });
+    const p = dlg.querySelector("#dPersonal");
+    if (p && p.value.trim()) picked.push(`${current.personalize}: ${p.value.trim()}`);
     const f = dlg.querySelector("input[name=fabric]:checked");
     if (f && f.value !== "No preference") picked.push(f.value);
     return { extra, picked };
@@ -96,6 +101,8 @@ const WEB3FORMS_KEY = "f977bdbc-e3e7-4a41-96db-0c8751a2e808";
     $("#dName").textContent = current.name;
     $("#dPrice").textContent = current.priceLabel || money(current.price);
     $("#dDesc").textContent = current.desc;
+    $("#dNote").textContent = current.note || "";
+    $("#dNote").hidden = !current.note;
     $("#dOptions").innerHTML = optionsHTML(current);
     $("#dQty").value = 1;
     updateTotal();

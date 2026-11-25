@@ -74,6 +74,7 @@ dialog::backdrop { background: rgba(30,24,18,.45); }
 .sheet h2 { font-size: 28px; text-align: center; }
 .sheet .price { text-align: center; color: var(--accent); margin: 0; }
 .sheet .desc { text-align: center; color: var(--muted); font-style: italic; }
+.sheet .note { font-family: var(--sans); font-size: 13px; color: var(--muted); text-align: center; margin: 4px 0 0; }
 .close { position: absolute; top: 8px; right: 10px; width: 40px; height: 40px; border: 0; background: none; font-size: 30px; line-height: 1; color: var(--muted); cursor: pointer; }
 .field { display: block; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin: 14px 0 0; }
 .field input, .field select, .field textarea { display: block; width: 100%; margin-top: 6px; font: 16px var(--sans); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px; }
