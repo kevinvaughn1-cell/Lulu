@@ -51,6 +51,8 @@ window.CATALOG = [
           { label: "Strip collection", choices: [["Cottagecore", 0], ["Star Dune", 0], ["Desert Dusk", 0]] },
           { label: "Batting", choices: [["None", 0], ["Polyester batting + quilting", 5], ["Cotton batting + quilting", 7]] }
         ] },
+      { id: "cosmetic-bag", name: "Quilted Cosmetic Bag", price: 30, img: "quilted-cosmetic-bag",
+        desc: "Individually handmade with diamond quilting, a gold tone zipper and coordinating fabric side tabs. Soft yet structured, this spacious bag is perfect for cosmetics, toiletries, travel essentials or everyday organization. Beautiful enough to display and practical enough to use every day." },
       { id: "hot-pad", name: "Casserole Hot Pad", price: 15, img: "casserole-hot-pad",
         desc: "Colorful cotton patchwork, insulated for hot dishes." }
     ]
