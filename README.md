@@ -11,3 +11,6 @@ A simple, phone-friendly catalog site with order requests. Plain HTML/CSS/JS, so
 
 ## Editing products
 Everything (names, prices, descriptions, options, fabrics) lives in `catalog.js`. Photos are in `images/`.
+
+## New-piece email list
+The "New pieces, first" signup near the bottom of the page and the "Email me when new pieces are added" box on the order form both save to the Netlify form called `updates`. See it under **Forms → updates** in Netlify, where you can download it as a CSV. When something new is added, email everyone on it with their addresses in BCC.

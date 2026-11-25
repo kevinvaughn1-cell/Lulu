@@ -190,9 +190,14 @@ const WEB3FORMS_KEY = "f977bdbc-e3e7-4a41-96db-0c8751a2e808";
         "Needed by": data.get("needed-by") || "—",
         Items: data.get("items"),
         "Estimated total": data.get("estimated-total"),
-        Notes: data.get("notes") || "—"
+        Notes: data.get("notes") || "—",
+        "Email me about new pieces": data.get("new-pieces") ? "Yes" : "No"
       })
     }).then((r) => r.ok) : Promise.resolve(false);
+    // Opted in: also add them to the new-pieces list ("updates" form).
+    if (data.get("new-pieces")) {
+      postForm({ "form-name": "updates", source: "Order form", name: data.get("name"), email: data.get("contact") }).catch(() => {});
+    }
     try {
       const results = await Promise.all([toNetlify.catch(() => false), toEmail.catch(() => false)]);
       if (!results.some(Boolean)) throw new Error("send failed");
@@ -204,6 +209,30 @@ const WEB3FORMS_KEY = "f977bdbc-e3e7-4a41-96db-0c8751a2e808";
       btn.disabled = false; btn.textContent = "Send order request";
     }
   });
+  // ---------- New-piece signup ----------
+  function postForm(fields) {
+    return fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(fields).toString()
+    }).then((r) => { if (!r.ok) throw new Error("send failed"); });
+  }
+  $("#updatesForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = e.target, btn = form.querySelector("button[type=submit]");
+    btn.disabled = true; btn.textContent = "Sending…";
+    try {
+      await postForm(new FormData(form));
+      form.querySelectorAll(".field").forEach((f) => (f.style.display = "none"));
+      btn.style.display = "none";
+      $("#updatesThanks").hidden = false;
+    } catch (err) {
+      alert("Sorry, that didn't send. Please try again in a moment.");
+    } finally {
+      btn.disabled = false; btn.textContent = "Tell me about new pieces";
+    }
+  });
+
   $("#thanksClose").addEventListener("click", () => $("#thanksDialog").close());
 
   renderOrder();

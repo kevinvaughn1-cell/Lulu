@@ -57,6 +57,14 @@ main, .fabrics { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
 .swatches img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; }
 .swatches figcaption { font-size: 14px; margin-top: 4px; }
 
+/* New-piece signup */
+.updates { max-width: 520px; margin: 0 auto; padding: 44px 16px 0; }
+.updates h2 { text-align: center; font-size: clamp(28px, 6vw, 38px); }
+.updates form { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 4px 16px 18px; }
+.updates .note { margin: 12px 0 0; }
+.check { display: flex; align-items: center; gap: 10px; font-family: var(--sans); font-size: 15px; margin: 16px 0 0; cursor: pointer; }
+.check input { width: 20px; height: 20px; flex: none; margin: 0; accent-color: var(--ink); }
+
 footer { text-align: center; padding: 40px 16px 110px; border-top: 1px solid var(--line); margin-top: 40px; }
 
 /* Floating order button */
