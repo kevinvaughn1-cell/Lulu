@@ -14,3 +14,10 @@ Everything (names, prices, descriptions, options, fabrics) lives in `catalog.js`
 
 ## New-piece email list
 The "New pieces, first" signup near the bottom of the page and the "Email me when new pieces are added" box on the order form both save to the Netlify form called `updates`. See it under **Forms → updates** in Netlify, where you can download it as a CSV. When something new is added, email everyone on it with their addresses in BCC.
+
+## Admin page
+`/admin` shows the new-piece list (with a "copy all emails" button for BCC) and order requests, behind a password. The password check and the data lookup happen in `netlify/functions/admin.mjs`; nothing secret is in this repo. It needs two environment variables in Netlify (**Site configuration → Environment variables**), then a redeploy:
+- `ADMIN_PASSWORD`: the password for `/admin`
+- `NETLIFY_API_TOKEN`: a Netlify personal access token (User settings → Applications), so the page can read form submissions
+
+Changing either one signs everyone out.
